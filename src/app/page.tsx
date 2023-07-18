@@ -1,113 +1,112 @@
+"use client";
 import Image from 'next/image'
+import Header from './components/header'
+import Contact from './components/contact'
+import { WhatsappShareButton, WhatsappIcon, EmailShareButton, EmailIcon, LinkedinShareButton, LinkedinIcon } from 'next-share'
+import config from './components/header/config.json'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <>
+    <main className="h-full">
+      <div className='grid grid-cols-4 grid-rows-3 gap-1 h-full'>
+        <div className='col-span-2 row-span-3 hover:cursor-pointer'>
+          <div className='h-full relative'>
+            <div className='absolute text-white p-6 bottom-0 left-0 bg-gray-hard'>
+              <h3 className='font-bold text-4xl pb-4'>Sobre nosotros</h3>
+              <span className='text-xl text-justify'>Prometheus Software es una empresa de desarrollo de software, consultora tecnológica para empresas. Nuestro enfoque se centra en proporcionar soluciones tecnológicas personalizadas que ayuden a las empresas a maximizar su potencial.</span>
+            </div>
+            <div className='absolute p-6 bg-black-prom opacity-90'>
+            <img className='' src="logo.png" alt="" />
+            <p className='font-semibold text-green-middle text-center text-2xl'>Enciende tu potencial</p>
+            </div>
+            <img
+              className='object-cover w-full h-full'
+              src="principal-left-2.jpg"
+              alt=""
             />
-          </a>
+          </div>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        <div className='col-start-3 hover:cursor-pointer relative'>
+          <div className='absolute text-white inset-0 bg-gray-hard m-4 p-4 grid justify-center'>
+            <h3 className='font-bold text-2xl pb-4 text-center'>Desarrollo de software</h3>
+            <p className=''>Desarrollamos software de acuerdo a tus necesidades, y las necesidades del mercado.</p>
+            <button className='text-white border-2 border-white mt-4 p-2'>Conoce nuestros productos</button>
+          </div>
+          <img
+            className='object-cover w-full h-full'
+            src="https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
+        </div>
+        <div className='bg-red-500 col-start-3 row-start-2 relative hover:cursor-pointer'>
+          <div className='absolute text-white inset-0 bg-gray-hard m-4 p-4 grid justify-center'>
+            <h3 className='font-bold text-2xl pb-4 text-center'>Redes de Datos</h3>
+            <p className=''>Somos lideres en la instalación, mantenimiento y reparación de redes de datos.</p>
+            <button className='text-white border-2 border-white mt-4 p-2'>Genera una cotización</button>
+          </div>
+          <img
+            className='object-cover w-full h-full'
+            src="https://images.pexels.com/photos/159304/network-cable-ethernet-computer-159304.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
+        </div>
+        <div className='bg-red-500 col-start-4 row-start-1 relative hover:cursor-pointer'>
+          <div className='absolute text-white inset-0 bg-gray-hard m-4 p-4 grid justify-center'>
+            <h3 className='font-bold text-2xl pb-4 text-center'>Desarrollo de Marca</h3>
+            <p className=''>Landing page, e-commerce y consultoría para un mejor uso de las redes sociales.</p>
+            <button className='text-white border-2 border-white mt-4 p-2'>Genera una cotización</button>
+          </div>
+          <img
+            className='object-cover w-full h-full'
+            src="https://images.pexels.com/photos/326514/pexels-photo-326514.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
+        </div>
+        <div className='bg-yellow-300 col-start-4 row-start-2 relative hover:cursor-pointer'>
+          <div className='absolute text-white inset-0 bg-gray-hard m-4 p-4 grid justify-center'>
+            <h3 className='font-bold text-2xl pb-4 text-center'>Nuestro equipo</h3>
+            <p className=''>Estámos compuestos por expertos en informática, comprometidos en brindar servicios de alta calidad.</p>
+            <button className='text-white border-2 border-white mt-4 p-2'>Conoce al equipo</button>
+          </div>
+          <img
+            className='object-cover w-full h-full'
+            src="https://images.pexels.com/photos/2566581/pexels-photo-2566581.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
+        </div>
+        <div className='bg-yellow-300 col-start-3 row-start-3 relative hover:cursor-pointer'>
+          <div className='absolute text-white inset-0 bg-gray-hard m-4 p-4 grid justify-center'>
+            <h3 className='font-bold text-2xl pb-4 text-center'>Nuestro equipo</h3>
+            <p className=''>Estámos compuestos por expertos en informática, comprometidos en brindar servicios de alta calidad.</p>
+            <button className='text-white border-2 border-white mt-4 p-2'>Conoce al equipo</button>
+          </div>
+          <img
+            className='object-cover w-full h-full'
+            src="https://images.pexels.com/photos/2566581/pexels-photo-2566581.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
+        </div>
+        <div className='col-start-4 row-start-3 bg-black-prom p-4'>
+          <h3 className='text-green-middle text-4xl'>Contacto</h3>
+          <div className='mt-4 grid gap-2'>
+            <p className='text-white'>Telefono: (+57) 3162717184</p>
+            <p className='text-white'>Email: prometheus.software.sas@gmail.com</p>
+            <p className='text-white'>LinkedIn: prometheus-software-sas</p>
+            <p className='text-white'>Instagram: @prometheus.software</p>
+          </div>
+        </div>
+        {/* <div className='col-span-2 col-start-3 row-start-3 bg-black-prom p-8'>
+          <h3 className='text-green-middle text-4xl'>Contacto</h3>
+          <div className='mt-4 grid gap-2'>
+            <p className='text-white'>Telefono: (+57) 3162717184</p>
+            <p className='text-white'>Email: prometheus.software.sas@gmail.com</p>
+            <p className='text-white'>LinkedIn: prometheus-software-sas</p>
+            <p className='text-white'>Instagram: @prometheus.software</p>
+          </div>
+        </div> */}
       </div>
     </main>
+    </>
   )
 }
