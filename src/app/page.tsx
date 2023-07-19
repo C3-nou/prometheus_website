@@ -1,18 +1,23 @@
 "use client";
+import { useRef, useState } from 'react'
+import classNames from 'classnames';
 import Image from 'next/image'
-import Header from './components/header'
-import Contact from './components/contact'
-import { WhatsappShareButton, WhatsappIcon, EmailShareButton, EmailIcon, LinkedinShareButton, LinkedinIcon } from 'next-share'
-import config from './components/header/config.json'
 
 export default function Home() {
+  const [showDisplay, setShowDisplay] = useState<string | null>(null)
   return (
     <>
     <main className="h-full">
       <div className='grid grid-cols-4 grid-rows-3 gap-1 h-full'>
-        <div className='col-span-2 row-span-3 hover:cursor-pointer'>
+        <div className='col-span-2 row-span-3 hover:cursor-pointer'
+          onMouseOver={() => setShowDisplay('LEFT_IMAGE')}
+          onMouseOut={() => setShowDisplay(null)}
+        >
           <div className='h-full relative'>
-            <div className='absolute text-white p-6 bottom-0 left-0 bg-gray-hard'>
+            <div className={classNames('absolute text-white p-6 bottom-0 left-0 bg-gray-hard ease-in duration-300', {
+              'opacity-40': showDisplay !== "LEFT_IMAGE",
+              'opacity-80': showDisplay === "LEFT_IMAGE",
+            })}>
               <h3 className='font-bold text-4xl pb-4'>Sobre nosotros</h3>
               <span className='text-xl text-justify'>Prometheus Software es una empresa de desarrollo de software, consultora tecnológica para empresas. Nuestro enfoque se centra en proporcionar soluciones tecnológicas personalizadas que ayuden a las empresas a maximizar su potencial.</span>
             </div>
@@ -27,11 +32,15 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className='col-start-3 hover:cursor-pointer relative'>
-          <div className='absolute text-white inset-0 bg-gray-hard m-4 p-4 grid justify-center'>
-            <h3 className='font-bold text-2xl pb-4 text-center'>Desarrollo de software</h3>
-            <p className=''>Desarrollamos software de acuerdo a tus necesidades, y las necesidades del mercado.</p>
-            <button className='text-white border-2 border-white mt-4 p-2'>Conoce nuestros productos</button>
+        <div className='col-start-3 hover:cursor-pointer relative'
+          onMouseOver={() => setShowDisplay('SOFTWARE_DEVELOPMENT')}
+          onMouseOut={() => setShowDisplay(null)}
+        >
+          <div className={classNames('absolute text-white bottom-0 bg-gray-hard grid justify-center items-center w-full', {
+            'opacity-80': showDisplay !== "SOFTWARE_DEVELOPMENT",
+            'opacity-100': showDisplay === "SOFTWARE_DEVELOPMENT",
+          })}>
+            <h3 className='font-bold text-2xl text-center p-2'>Desarrollo de software</h3>
           </div>
           <img
             className='object-cover w-full h-full'
@@ -39,11 +48,15 @@ export default function Home() {
             alt=""
           />
         </div>
-        <div className='bg-red-500 col-start-3 row-start-2 relative hover:cursor-pointer'>
-          <div className='absolute text-white inset-0 bg-gray-hard m-4 p-4 grid justify-center'>
-            <h3 className='font-bold text-2xl pb-4 text-center'>Redes de Datos</h3>
-            <p className=''>Somos lideres en la instalación, mantenimiento y reparación de redes de datos.</p>
-            <button className='text-white border-2 border-white mt-4 p-2'>Genera una cotización</button>
+        <div className='bg-red-500 col-start-3 row-start-2 relative hover:cursor-pointer'
+          onMouseOver={() => setShowDisplay('NETWORK_LAN')}
+          onMouseOut={() => setShowDisplay(null)}
+        >
+          <div className={classNames('absolute text-white bottom-0 bg-gray-hard grid justify-center items-center w-full', {
+            'opacity-80': showDisplay !== "NETWORK_LAN",
+            'opacity-100': showDisplay === "NETWORK_LAN",
+          })}>
+            <h3 className='font-bold text-2xl text-center p-2'>Redes de Datos</h3>
           </div>
           <img
             className='object-cover w-full h-full'
@@ -51,11 +64,15 @@ export default function Home() {
             alt=""
           />
         </div>
-        <div className='bg-red-500 col-start-4 row-start-1 relative hover:cursor-pointer'>
-          <div className='absolute text-white inset-0 bg-gray-hard m-4 p-4 grid justify-center'>
-            <h3 className='font-bold text-2xl pb-4 text-center'>Desarrollo de Marca</h3>
-            <p className=''>Landing page, e-commerce y consultoría para un mejor uso de las redes sociales.</p>
-            <button className='text-white border-2 border-white mt-4 p-2'>Genera una cotización</button>
+        <div className='bg-red-500 col-start-4 row-start-1 relative hover:cursor-pointer'
+          onMouseOver={() => setShowDisplay('NETWORKING')}
+          onMouseOut={() => setShowDisplay(null)}
+        >
+          <div className={classNames('absolute text-white bottom-0 bg-gray-hard grid justify-center items-center w-full', {
+            'opacity-80': showDisplay !== "NETWORKING",
+            'opacity-100': showDisplay === "NETWORKING",
+          })}>
+            <h3 className='font-bold text-2xl text-center p-2'>Desarrollo de Marca</h3>
           </div>
           <img
             className='object-cover w-full h-full'
@@ -63,11 +80,15 @@ export default function Home() {
             alt=""
           />
         </div>
-        <div className='bg-yellow-300 col-start-4 row-start-2 relative hover:cursor-pointer'>
-          <div className='absolute text-white inset-0 bg-gray-hard m-4 p-4 grid justify-center'>
+        <div className='bg-yellow-300 col-start-4 row-start-2 relative hover:cursor-pointer'
+          onMouseOver={() => setShowDisplay('OUR_TEAM')}
+          onMouseOut={() => setShowDisplay(null)}
+        >
+          <div className={classNames('absolute text-white bottom-0 bg-gray-hard grid justify-center items-center w-full', {
+            'opacity-80': showDisplay !== "OUR_TEAM",
+            'opacity-100': showDisplay === "OUR_TEAM",
+          })}>
             <h3 className='font-bold text-2xl pb-4 text-center'>Nuestro equipo</h3>
-            <p className=''>Estámos compuestos por expertos en informática, comprometidos en brindar servicios de alta calidad.</p>
-            <button className='text-white border-2 border-white mt-4 p-2'>Conoce al equipo</button>
           </div>
           <img
             className='object-cover w-full h-full'
@@ -75,11 +96,15 @@ export default function Home() {
             alt=""
           />
         </div>
-        <div className='bg-yellow-300 col-start-3 row-start-3 relative hover:cursor-pointer'>
-          <div className='absolute text-white inset-0 bg-gray-hard m-4 p-4 grid justify-center'>
-            <h3 className='font-bold text-2xl pb-4 text-center'>Nuestro equipo</h3>
-            <p className=''>Estámos compuestos por expertos en informática, comprometidos en brindar servicios de alta calidad.</p>
-            <button className='text-white border-2 border-white mt-4 p-2'>Conoce al equipo</button>
+        <div className='bg-yellow-300 col-start-3 row-start-3 relative hover:cursor-pointer'
+          onMouseOver={() => setShowDisplay('WORK_WITH_US')}
+          onMouseOut={() => setShowDisplay(null)}
+        >
+          <div className={classNames('absolute text-white bottom-0 bg-gray-hard grid justify-center items-center w-full', {
+            'opacity-80': showDisplay !== "WORK_WITH_US",
+            'opacity-100': showDisplay === "WORK_WITH_US",
+          })}>
+            <h3 className='font-bold text-2xl text-center p-2'>Trabaja con nostros</h3>
           </div>
           <img
             className='object-cover w-full h-full'
@@ -96,15 +121,6 @@ export default function Home() {
             <p className='text-white'>Instagram: @prometheus.software</p>
           </div>
         </div>
-        {/* <div className='col-span-2 col-start-3 row-start-3 bg-black-prom p-8'>
-          <h3 className='text-green-middle text-4xl'>Contacto</h3>
-          <div className='mt-4 grid gap-2'>
-            <p className='text-white'>Telefono: (+57) 3162717184</p>
-            <p className='text-white'>Email: prometheus.software.sas@gmail.com</p>
-            <p className='text-white'>LinkedIn: prometheus-software-sas</p>
-            <p className='text-white'>Instagram: @prometheus.software</p>
-          </div>
-        </div> */}
       </div>
     </main>
     </>
